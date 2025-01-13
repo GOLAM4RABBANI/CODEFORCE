@@ -1,0 +1,1 @@
+{"name":"Local: Untitl-1","url":"c:\\ASUS\\Untitl-1.c","tests":[{"id":1736697345004,"input":"abcd\nbc\nef","output":"aefd"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\ASUS\\Untitl-1.c","group":"local","local":true}

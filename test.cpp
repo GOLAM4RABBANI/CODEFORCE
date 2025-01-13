@@ -26,7 +26,7 @@ ll lcm(ll n,ll k){
    for(int i=tem;;i++){
       if(i%n == 0 && i%k==0) return i;
    }
-   
+
 }
 
 
@@ -34,33 +34,40 @@ ll lcm(ll n,ll k){
 //* main code
 void solve(){
    ll n;
+   char c;
    string st;
-   char s;
-   cin >> n >> s >> st;
-
+   cin >> n >> c >> st;
    vl v;
-   bool chk = 0;
-   ll cnt = 0;
-   if(s=='g'){
-      cout << 0 << endl;
-      return;
-   }
+   bool chk1 = 0,chk2 =0;
+   ll cnt1=1,cnt0=0;
+   ll ans = 0;
+   ll temans = 0;
+
    for(int i=0;i < n;i++){
-      if(st[i]==s || i==0) chk = 1;
-      if(chk == 1 && st[i]!='g')cnt++;
-      if(st[i]=='g'){
-         v.pb(cnt);
-         cnt = 0;
-         chk = 0;
+      if(chk1==0 && st[i]=='g' && chk2 == 0) {chk2 = 1; temans = i+1;}
+      if(st[i]==c)chk1 = 1;
+      if(chk1==1 && st[i]!='g')cnt1++;
+      else if(chk1 == 1 && st[i]=='g'){
+         v.pb(cnt1);
+         cnt1=0;
+         chk1 =0;
       }
    }
+   sort(all(v));
+   for(auto u:v) cout << u << " ";
+   cout << endl;
 
-   ll ans = cnt + v[0];
+   if(v.empty()==1){
+    ans = cnt1+temans;
+    cout << ans << endl;
+    return;
+   }else{
+    v[v.sz-1]==0? cout << 1 << endl : cout << v[v.sz-1] << endl;
+    return;
+   }
 
-   sort(v.rbegin(),v.rend());
-   ans = max(ans,v[0]);
 
-   cout << ans << endl;
+
 }
 
 int main(){
@@ -69,6 +76,6 @@ int main(){
    cin >> tc;
    while(tc--)
    solve();
-   
+
    return 0;
 }
